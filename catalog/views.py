@@ -99,8 +99,8 @@ class LoanedBooksByUserListView(LoginRequiredMixin,generic.ListView):
     model = BookInstance
     template_name ='catalog/bookinstance_list_borrowed_user.html'
     paginate_by = 10
-    #找出當前用戶已借書目
-    def get_queryset(self):
+    #找出當前用戶已借書目 
+    def get_queryset(self): #似乎必須用get_queryset()
         return BookInstance.objects.filter(borrower=self.request.user).filter(status__exact='o').order_by('due_back') 
 
 #查詢所有已借出書目
@@ -109,8 +109,8 @@ class All_Borrowed(LoginRequiredMixin,PermissionRequiredMixin,generic.ListView):
     permission_required = 'catalog.can_mark_returned'
     template_name ='catalog/bookinstance_all_borrowed.html'
     paginate_by = 10
-    def get_all_queryset(self):
-        return BookInstance.objects.filter(status__exact='o').order_by('due_back')
+    def get_queryset(self): #似乎必須用get_queryset()
+        return BookInstance.objects.filter(status__exact="o").order_by('due_back')
 
 
 

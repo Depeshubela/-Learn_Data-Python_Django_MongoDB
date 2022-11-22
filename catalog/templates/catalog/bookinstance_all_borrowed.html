@@ -7,13 +7,13 @@
     <ul>
 
       {% for bookinst_all in bookinstance_list %}
+
       <li class="{% if bookinst_all.is_overdue %}text-danger{% endif %}">
-        <!--{% if bookinst_all.borrower != None and bookinst_all.due_back != None %}-->
-        <a href="{% url 'book-detail' bookinst_all.book.pk %}">{{bookinst_all.book.title}}</a> ({{ bookinst_all.due_back }}) - Borrower：{{bookinst_all.borrower}}{% endif %}{% if perms.catalog.can_mark_returned %} - <a href="{% url 'renew-book-librarian' bookinst_all.id %}">Renew</a>  {% endif %}
+        <a href="{% url 'book-detail' bookinst_all.book.pk %}">{{bookinst_all.book.title}}</a> ({{ bookinst_all.due_back }}) - Borrower：{{bookinst_all.borrower}}{% if perms.catalog.can_mark_returned %} - <a href="{% url 'renew-book-librarian' bookinst_all.id %}">Renew</a>  {% endif %}
       </li>
       {% endfor %}
     </ul>
-
+    
     {% else %}
       <p>There are no books borrowed.</p>
     {% endif %}
