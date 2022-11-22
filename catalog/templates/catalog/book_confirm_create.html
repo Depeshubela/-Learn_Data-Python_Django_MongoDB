@@ -1,0 +1,18 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<form action="" method="post">
+    {% csrf_token %}
+    <table>
+    {{ form.as_table }}
+    </table>
+
+    {% for formset in inlines %}
+    {{ formset }}
+    {% endfor %}
+    <br />
+    <input type="submit" value="Submit" /> 
+    
+</form>
+{% endblock %}
