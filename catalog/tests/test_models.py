@@ -8,7 +8,6 @@ from catalog.models import Author
 class AuthorModelTest(TestCase):
     @classmethod
     def setUpTestData(cls):
-        """Set up non-modified objects used by all test methods."""
         cls.obj_id = Author.objects.create(first_name='Big', last_name='Bob',date_of_birth='2000-12-12',date_of_death='2022-11-11').pk
         
     def test_first_name_label(self):
